@@ -35,7 +35,6 @@ export default function TodoApp() {
     axios
       .get("/api/todos/")
       .then((res) => {
-        console.log(res.data)
         setTodos(res.data)
       })
       .catch((err) => console.log(err))
