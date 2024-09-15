@@ -1,0 +1,40 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      target: production
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      target: production
+    volumes:
+      - static:/app/backend/static
+      - database:/app/backend/database
+    ports:
+      - 8000:8000
+    env_file:
+      - ./backend/.env
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    volumes:
+      - static:/app/backend/static
+      - database:/app/backend/database/db.sqlite3
+    ports:
+      - 80:80
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  static:
+  database:

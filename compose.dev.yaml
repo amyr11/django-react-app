@@ -1,0 +1,27 @@
+services:
+  frontend:
+    extends:
+      file: compose.prod.yaml
+      service: frontend
+    build:
+      target: development
+    volumes:
+      - ./frontend:/app/frontend
+
+  backend:
+    extends:
+      file: compose.prod.yaml
+      service: backend
+    build:
+      target: development
+    volumes:
+      - ./backend:/app/backend
+
+  nginx:
+    extends:
+      file: compose.prod.yaml
+      service: nginx
+
+volumes:
+  static:
+  database:
