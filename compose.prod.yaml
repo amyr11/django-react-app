@@ -1,6 +1,6 @@
 services:
   frontend:
-    container_name: frontend
+    container_name: frontend-prod
     build:
       context: ./frontend
       target: production
@@ -10,7 +10,7 @@ services:
       - backend
 
   backend:
-    container_name: backend
+    container_name: backend-prod
     build:
       context: ./backend
       target: production
@@ -23,7 +23,7 @@ services:
       - ./backend/.env
 
   nginx:
-    container_name: nginx
+    container_name: nginx-prod
     build:
       context: ./nginx
     volumes:
