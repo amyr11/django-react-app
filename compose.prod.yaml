@@ -6,7 +6,6 @@ services:
       target: production
       platforms:
         - "linux/amd64"
-        - "linux/arm64"
     image: amyr11/django-react-app:frontend
     ports:
       - 3000:3000
@@ -20,7 +19,6 @@ services:
       target: production
       platforms:
         - "linux/amd64"
-        - "linux/arm64"
     image: amyr11/django-react-app:backend
     volumes:
       - static:/app/backend/static
@@ -36,7 +34,6 @@ services:
       context: ./nginx
       platforms:
         - "linux/amd64"
-        - "linux/arm64"
     image: amyr11/django-react-app:nginx
     volumes:
       - static:/app/backend/static
