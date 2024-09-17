@@ -4,6 +4,7 @@ services:
     build:
       context: ./frontend
       target: production
+    image: amyr11/django-react-app:frontend
     ports:
       - 3000:3000
     depends_on:
@@ -14,6 +15,7 @@ services:
     build:
       context: ./backend
       target: production
+    image: amyr11/django-react-app:backend
     volumes:
       - static:/app/backend/static
       - database:/app/backend/database
@@ -26,6 +28,7 @@ services:
     container_name: nginx-prod
     build:
       context: ./nginx
+    image: amyr11/django-react-app:nginx
     volumes:
       - static:/app/backend/static
       - database:/app/backend/database/db.sqlite3
