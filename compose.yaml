@@ -25,6 +25,8 @@ services:
       - database:/app/backend/database
     ports:
       - 8000:8000
+    env_file:
+      - ./backend/.env
 
   nginx:
     container_name: nginx-prod
