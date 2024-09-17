@@ -4,8 +4,6 @@ services:
     build:
       context: ./frontend
       target: production
-      platforms:
-        - "linux/amd64"
     ports:
       - 3000:3000
     depends_on:
@@ -16,8 +14,6 @@ services:
     build:
       context: ./backend
       target: production
-      platforms:
-        - "linux/amd64"
     volumes:
       - static:/app/backend/static
       - database:/app/backend/database
@@ -30,8 +26,6 @@ services:
     container_name: nginx-prod
     build:
       context: ./nginx
-      platforms:
-        - "linux/amd64"
     volumes:
       - static:/app/backend/static
       - database:/app/backend/database/db.sqlite3

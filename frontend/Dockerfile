@@ -17,7 +17,7 @@ FROM base AS deps
 RUN --mount=type=bind,source=package.json,target=package.json \
 	--mount=type=bind,source=package-lock.json,target=package-lock.json \
 	--mount=type=cache,target=/root/.npm \
-	npm ci --omit=dev
+	npm ci --verbose --omit=dev
 
 ################################################################################
 # Development stage (only installs dev dependencies, no build)
@@ -30,7 +30,7 @@ ENV NODE_ENV=development
 RUN --mount=type=bind,source=package.json,target=package.json \
 	--mount=type=bind,source=package-lock.json,target=package-lock.json \
 	--mount=type=cache,target=/root/.npm \
-	npm ci
+	npm ci --verbose
 
 # Copy all source files for development
 COPY . .
