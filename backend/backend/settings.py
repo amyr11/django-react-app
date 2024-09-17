@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 
@@ -29,7 +30,7 @@ SECRET_KEY = "django-insecure-elv!n1*dl#z%$c=b#evin52)ums-&(=r2tnk8$o(q^z8_ft*l(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = json.loads(os.getenv("ALLOWED_HOSTS")) or []
 
 USE_X_FORWARDED_HOST = True
 
@@ -133,7 +134,4 @@ STATIC_ROOT = BASE_DIR / "static"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+CORS_ORIGIN_WHITELIST = json.loads(os.getenv("CORS_ORIGIN_WHITELIST")) or []

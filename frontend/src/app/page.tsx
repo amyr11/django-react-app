@@ -15,7 +15,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { TabsContent } from '@radix-ui/react-tabs'
 import { toast } from 'sonner'
 import { Badge } from '@/components/ui/badge'
-import axios from "axios";
+import axios from '@/lib/axios';
 
 interface Todo {
   id?: number
